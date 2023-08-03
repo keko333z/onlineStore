@@ -25,8 +25,8 @@ export function Order ({deliveryInfo}) {
     </div>
     <div className="orden-items-div">
         <h3>{"Order items"}</h3>
-        {deliveryInfo?.cart.map(item => {return <div  className="order-items-row" key={item.productId}>
-                    <p className="order-item">{`Product:  ${item.name}`}</p><p>{`Quantity:  ${item.quantity}`}</p><p>{`Unit Price: ${item.price} `}</p> 
+        {deliveryInfo?.cart.map(item => {return <div  className="order-items-row" key={item.id}>
+                    <p className="order-item">{`Product:  ${item.title}`}</p><p>{`Quantity:  ${item.quantity}`}</p><p>{`Unit Price: ${item.price} `}</p> 
                   </div>
                 })}
         <b>{(deliveryInfo?.shippingType !== "0" ? "Express Shipping " : "Normal Shipping ") + deliveryInfo?.shippingType}</b>

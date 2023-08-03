@@ -32,8 +32,8 @@ export function Cart(){
               </button>
             </Link>}      
 
-            { cart.cart.length === 0 ? <div className="cart-row">The cart is empty</div> : cart.cart.map(item => { return <div className="cart-row" key={item.productId}>
-              {`Product:  ${item.name}, Quantity: ${item.quantity} Unit Price: ${item.price} `} 
+            { cart.cart.length === 0 ? <div className="cart-row">The cart is empty</div> : cart.cart.map(item => { return <div className="cart-row" key={item.id}>
+              {`Product:  ${item.title}, Quantity: ${item.quantity} Unit Price: ${item.price} `} 
               <button className="add-button" onClick={()=>cart.addToCart(item)}>+</button>
               <button className="add-button" onClick={()=>cart.removeFromCart(item)}>-</button>
               </div>

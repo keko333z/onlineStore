@@ -55,8 +55,8 @@ export function Checkout ({setDeliveryInfo}) {
             <div className="order-info-div">
                 <h3>Review your order</h3>
 
-                {cart.cart.map(item => {return <div className="cart-row" key={item.productId}>
-                  {`Product:  ${item.name}, Quantity: ${item.quantity} Unit Price: ${item.price} `} 
+                {cart.cart.map(item => {return <div className="cart-row" key={item.id}>
+                  {`Product:  ${item.title}, Quantity: ${item.quantity} Unit Price: ${item.price} `} 
                   </div>
                 })}
                 <p><b>Sub-Total: $ {sum}</b></p>
@@ -75,6 +75,7 @@ export function Checkout ({setDeliveryInfo}) {
                   <p><b>Total: $ {sum+parseInt(values.shippingType)}</b></p>
                 </div>
             </div>
+            
       
             <div className="delivery-info-div">
                 <h3>Personal information</h3>

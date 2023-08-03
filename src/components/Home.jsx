@@ -1,5 +1,5 @@
 import { Item } from "./Item";
-import allProducts from "../products.json"
+import alProducts from "../products.json"
 import { useEffect, useState } from "react";
 import { Filter } from "./Filter";
 
@@ -8,15 +8,24 @@ export function Home(){
     const [products, setProducts] = useState([])
     const [maxPrice, setMaxPrice] = useState('0')
     
+    
     const setMax = (p) => {
         setMaxPrice(p)
     }
-
     useEffect(()=>{
-        (maxPrice.length > 1) ? setProducts(allProducts.products.filter(p => parseInt(p.price) <= parseInt(maxPrice))) :
-        setProducts(allProducts.products)
+        fetch('https://fakestoreapi.com/products')
+            .then(res=>res.json())
+            .then(json=>{
+                (maxPrice.length > 1) ? setProducts(json.filter(p => (parseInt(p.price) <= parseInt(maxPrice))&&(p.category!=="jewelery"))) :
+                setProducts(json.filter(p=>p.category!=="jewelery"))
+                
+            }) 
     }, [maxPrice])
-    console.log(maxPrice)
+   
+
+ 
+        
+    
     return <div className="home-container">
 
         <Filter setMax={setMax}/>
@@ -24,8 +33,8 @@ export function Home(){
         
         
         
-        {products ? products?.map(product => 
-            <Item key={product.productId} product={product}/>
+        {products ? products?.slice(0,18).map(product => 
+            <Item key={product.id} product={product}/>
         ) : "Loading..."}
         
     </div>
