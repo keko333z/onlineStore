@@ -9,14 +9,14 @@ export const CartProvider = ({children}) => {
  
     const addToCart = (product) => {
         
-        const prodinarray = cart.find(item => item.productId === product.productId)
+        const prodinarray = cart.find(item => item.id === product.id)
         if (prodinarray) {
            /* const quantity = prodinarray.quantity+1
             const newProduct = {...product, quantity }
             const newcart = cart.filter(item => item.productId !== product.productId)
             setCart([...newcart, newProduct])*/
             const newcart= cart.map(item=> { 
-                if (item.productId === product.productId){ 
+                if (item.id === product.id){ 
                     const quantity = item.quantity+1
                     const newitem = {...item, quantity}
                     return newitem
@@ -34,15 +34,15 @@ export const CartProvider = ({children}) => {
     }
     const removeFromCart = (product) => {
         
-        const prodinarray = cart.find(item => item.productId === product.productId)
+        const prodinarray = cart.find(item => item.id === product.id)
         if (prodinarray) {
            if(prodinarray.quantity===1){
-            const newcart = cart.filter(item => item.productId !== product.productId)
+            const newcart = cart.filter(item => item.id !== product.id)
             setCart(newcart)
            }
            else {
             const newcart= cart.map(item=> { 
-                if (item.productId === product.productId){ 
+                if (item.id === product.id){ 
                     const quantity = item.quantity-1
                     const newitem = {...item, quantity}
                     return newitem
