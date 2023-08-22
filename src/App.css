@@ -40,14 +40,23 @@
   
   background-color: rgb(245, 220, 220);
 }
-.filter-form{
+.filters-div{
+  width: 20%;
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  flex-direction: column;
+  justify-content: flex-start;
   position: relative;
   left: 20px;
   top: 100px;
-  width: 20%;
+  
+}
+.filter-form{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 5px;
+  position: relative;
+  width: 80%;
   height: 40px;
   color: black;
   
@@ -55,6 +64,18 @@
 }
 .filter-input{
   width: 30%;
+}
+.cat-select{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  position: relative;
+  gap: 5px;
+  top: 60px;
+  width: 80%;
+  height: 40px;
+  color: rgb(10, 10, 10);
+  font-size: 12px;
 }
 
 .item {

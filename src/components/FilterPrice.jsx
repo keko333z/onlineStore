@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 
-export function Filter ({setMax}) {
+export function FilterPrice ({setMax}) {
     const [inputMax, setInputMax] = useState('')
 
     const updateInput = (e) => {
