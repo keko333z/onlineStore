@@ -29,7 +29,7 @@ export function Order ({deliveryInfo}) {
                     <p className="order-item">{`Product:  ${item.title}`}</p><p>{`Quantity:  ${item.quantity}`}</p><p>{`Unit Price: ${item.price} `}</p> 
                   </div>
                 })}
-        <b>{(deliveryInfo?.shippingType !== "0" ? "Express Shipping " : "Normal Shipping ") + deliveryInfo?.shippingType}</b>
+        <b>{deliveryInfo?.shippingType === "0" ? "Normal Shipping $" + deliveryInfo?.shippingType : "Express Shipping $" + deliveryInfo?.shippingType}</b>
         <h3>{"total "+deliveryInfo?.total}</h3>
     </div>
     
