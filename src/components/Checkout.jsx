@@ -34,11 +34,12 @@ export function Checkout ({setDeliveryInfo}) {
         cardCode: '',
         cardExpirationDateMonth: '',
         cardExpirationDateYear: '',
-        shippingType: 0,
+        shippingType: "",
       }}
       validationSchema={CheckoutInformationSchema}
       onSubmit={(values) => {
         values.order = orderNum
+        
         values.total = sum+parseInt(values.shippingType)
         values.date = date.toString()
         values.cart = cart.cart
@@ -55,26 +56,31 @@ export function Checkout ({setDeliveryInfo}) {
             <div className="order-info-div">
                 <h3>Review your order</h3>
 
-                {cart.cart.map(item => {return <div className="cart-row" key={item.productId}>
-                  {`Product:  ${item.name}, Quantity: ${item.quantity} Unit Price: ${item.price} `} 
+                {cart.cart.map(item => {return <div className="cart-row" key={item.id}>
+                  {`Product:  ${item.title}, Quantity: ${item.quantity} Unit Price: ${item.price} `} 
                   </div>
                 })}
                 <p><b>Sub-Total: $ {sum}</b></p>
 
-                <div role="group" aria-labelledby="my-radio-group">
+                <div role="group" name="shippingTypeGroup" aria-labelledby="my-radio-group">
                   <label>
                     Free - Normal Shipping
-                    <Field type="radio" name="shippingType" value="0" />
+                    <Field type="radio" name="shippingType" value="0"  />
                     
                   </label><br></br>
                   <label>
                     50$ - Express Shipping
-                    <Field type="radio" name="shippingType" value="50" checked/>
+                    <Field type="radio" name="shippingType" value="50" />
                     
                   </label>
-                  <p><b>Total: $ {sum+parseInt(values.shippingType)}</b></p>
+                  {errors.shippingType && touched.shippingType ? (
+                  <div className="field-error">{errors.shippingType}</div>
+                ) : <div className="field-error"></div>} 
+                  <p><b>Total: $ {values.shippingType === "" ? sum : sum+parseInt(values.shippingType)}</b></p>
                 </div>
+                
             </div>
+            
       
             <div className="delivery-info-div">
                 <h3>Personal information</h3>

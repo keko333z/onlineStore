@@ -1,31 +1,52 @@
 import { Item } from "./Item";
-import allProducts from "../products.json"
 import { useEffect, useState } from "react";
-import { Filter } from "./Filter";
+import { FilterPrice } from "./FilterPrice";
+import { FilterCat } from "./FilterCat";
 
 
 export function Home(){
     const [products, setProducts] = useState([])
     const [maxPrice, setMaxPrice] = useState('0')
+    const [cat, setCat] = useState('all')
     
     const setMax = (p) => {
         setMaxPrice(p)
     }
 
+    const clearFilters = () => {
+        setCat('all')
+        setMaxPrice('0')
+    }
     useEffect(()=>{
-        (maxPrice.length > 1) ? setProducts(allProducts.products.filter(p => parseInt(p.price) <= parseInt(maxPrice))) :
-        setProducts(allProducts.products)
-    }, [maxPrice])
-    console.log(maxPrice)
-    return <div className="home-container">
+        fetch('https://fakestoreapi.com/products')
+            .then(res=>res.json())
+            .then(json=>{
+                ( cat === 'all') ?
+                (maxPrice.length > 1) ? setProducts(json.filter(p => (parseInt(p.price) <= parseInt(maxPrice))&&(p.category!=="jewelery"))) :
+                setProducts(json.filter(p=>p.category!=="jewelery"))
+                :
+                (maxPrice.length > 1) ? setProducts(json.filter(p => (parseInt(p.price) <= parseInt(maxPrice))&&(p.category === cat))) :
+                setProducts(json.filter(p=>p.category === cat))
+                
+            }) 
+    }, [maxPrice, cat])
+   
 
-        <Filter setMax={setMax}/>
+ 
+        
+    
+    return <div className="home-container">
+        <div className="filters-div">
+        <FilterPrice setMax={setMax} max={maxPrice}/>
+        <FilterCat setCat={setCat} cat={cat}></FilterCat>
+        <button onClick={clearFilters} className="clear-button">Clear filters</button>
+        </div>
         <div className="home-grid">
         
         
         
-        {products ? products?.map(product => 
-            <Item key={product.productId} product={product}/>
+        {products ? products?.slice(0,18).map(product => 
+            <Item key={product.id} product={product}/>
         ) : "Loading..."}
         
     </div>

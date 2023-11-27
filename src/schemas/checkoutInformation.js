@@ -5,6 +5,8 @@ const year = today.getFullYear()
 const yearshort= parseInt((year.toString()).substring(2));
 
 export const CheckoutInformationSchema = Yup.object().shape({
+    shippingType: Yup.string()
+    .required('Select a shipping type!'),
     phone: Yup.number()
       .min(999999999, 'not valid')
       .max(9999999999, 'Too long')
