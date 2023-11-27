@@ -23,6 +23,7 @@ export function Order ({deliveryInfo}) {
         </div>
         
     </div>
+    
     <div className="orden-items-div">
         <h3>{"Order items"}</h3>
         {deliveryInfo?.cart.map(item => {return <div  className="order-items-row" key={item.id}>

@@ -12,6 +12,11 @@ export function Home(){
     const setMax = (p) => {
         setMaxPrice(p)
     }
+
+    const clearFilters = () => {
+        setCat('all')
+        setMaxPrice('0')
+    }
     useEffect(()=>{
         fetch('https://fakestoreapi.com/products')
             .then(res=>res.json())
@@ -32,9 +37,9 @@ export function Home(){
     
     return <div className="home-container">
         <div className="filters-div">
-        <FilterPrice setMax={setMax}/>
+        <FilterPrice setMax={setMax} max={maxPrice}/>
         <FilterCat setCat={setCat} cat={cat}></FilterCat>
-        
+        <button onClick={clearFilters} className="clear-button">Clear filters</button>
         </div>
         <div className="home-grid">
         

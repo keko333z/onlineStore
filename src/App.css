@@ -23,12 +23,10 @@
   width: 80%;
   background-color: rgb(172, 92, 92);
   min-height: 2200px;
-  
 }
 .home-grid{
   display: grid;
   position: relative;
-  
   grid-template-columns: repeat(3, 25%);
   grid-template-rows: repeat(6, 340px);
   gap: 20px;
@@ -53,29 +51,43 @@
 .filter-form{
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-around;
   gap: 5px;
   position: relative;
   width: 80%;
   height: 40px;
   color: black;
   
-  font-size: 12px;
+  font-size: 14px;
 }
 .filter-input{
-  width: 30%;
+  width: 50%;
+}
+.clear-button{
+  position: relative;
+  gap: 5px;
+  top: 100px;
+  left: 25%;
+  width: 50%;
+  height: 30px;
+  color: rgb(255, 255, 255);
+  font-size: 12px;
+}
+.clear-button:focus {
+  outline: none;
+  box-shadow: none;
 }
 .cat-select{
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-around;
   position: relative;
   gap: 5px;
   top: 60px;
   width: 80%;
   height: 40px;
   color: rgb(10, 10, 10);
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .item {

@@ -1,20 +1,17 @@
-import { useState } from "react";
 
 
-export function FilterPrice ({setMax}) {
-    const [inputMax, setInputMax] = useState('')
+
+export function FilterPrice ({setMax, max}) {
+    
 
     const updateInput = (e) => {
-        setInputMax(e.target.value)
+        
+        setMax(e.target.value)
     }
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        setMax(inputMax)
-    }
-    return    <form className="filter-form" onSubmit={handleSubmit}>
+   
+    return    <form className="filter-form" >
         <label htmlFor="maxPrice">Max price</label>
-        <input className="filter-input" name="maxPrice" placeholder="max price" value={inputMax} onChange={updateInput}></input>
-        <button type="submit">Filter</button>
+        <input className="filter-input" name="maxPrice" placeholder="max price" value={max} onChange={updateInput}></input>
     </form>
 
 

@@ -45,7 +45,7 @@ export function Cart(){
             
             
             <p style={{ cursor: "pointer", position: "absolute", top: 20, right: 20}} onClick={cart.clearCart}>
-              <img src={'../src/img/can.png'} style={{height: "30px", width: "30px"}} />
+              <img src={'../src/assets/can.png'} style={{height: "30px", width: "30px"}} />
                 Clear all
             </p>
             
